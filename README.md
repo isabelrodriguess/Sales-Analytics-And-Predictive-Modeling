@@ -1,70 +1,60 @@
-Overview
-This project focuses on analyzing historical sales data to uncover insights and predict future sales quantities using machine learning. The goal is to help businesses optimize inventory, marketing campaigns, and resources by predicting sales performance across various regions, customer types, and product categories.
+This project aims to provide actionable insights into sales performance through data analysis and machine learning. It is divided into two parts: Exploratory Data Analysis (EDA) and Sales Quantity Prediction using Machine Learning. The goal is to uncover trends, predict future sales quantities, and provide businesses with the ability to optimize inventory, marketing strategies, and operational decisions.
 
-The project is divided into two main parts:
-
-Exploratory Data Analysis (EDA) – Exploring sales trends, customer behaviors, and product performance.
-Sales Quantity Prediction using Machine Learning – Building and training machine learning models to forecast sales quantities for future periods.
-The dataset used for this analysis is from Kaggle and contains variables such as product ID, sale date, region, sales amount, quantity sold, customer type, payment method, and discount rate.
+Project Overview
+The project leverages historical sales data to uncover patterns in sales performance across various regions, product categories, customer types, and sales channels. By using machine learning models, the project aims to predict future sales quantities, enabling businesses to make data-driven decisions.
 
 Part 1: Exploratory Data Analysis (EDA)
-The exploratory data analysis focused on uncovering key patterns and trends in the sales data. Key insights from the analysis include:
+In Part 1, historical sales data was analyzed to uncover valuable insights into various aspects of the sales process, including:
+Monthly sales fluctuations and trends
+Regional sales performance and best-performing regions
+Product category analysis to identify the highest and lowest sales categories
+Impact of discount strategies on sales performance
+Customer behavior, comparing new vs. returning customers
+Performance of sales channels (online vs. retail)
+Seasonal sales patterns and their impact
 
-Sales Trends and Regional Performance:
-Sales remained relatively stable for the majority of the year but experienced a significant drop in January 2024, likely due to missing data. This highlighted an area for further investigation, potentially related to data inconsistencies or external factors.
-East Region consistently outperformed other regions, particularly in product categories like Food and Clothing.
-North Region experienced significant struggles, especially in January 2024, where no sales were recorded. This could point to regional marketing challenges or data-related issues.
-South Region displayed steady sales and had a strong customer base of returning customers, indicating greater customer loyalty.
-The West Region showed inconsistent sales performance but managed to recover towards the end of the year, signaling potential for improvement with the right strategies.
-
-Product Performance:
-Certain product categories stood out over the course of the year. Clothing emerged as the top-selling category with steady sales, while Furniture and Food performed particularly well in the East Region. However, sales in Clothing and Furniture dropped sharply in January 2024, pointing to seasonality or external events that might have impacted sales.
-
-Discounts and Customer Behavior:
-Discount strategies had varying effects on sales. A 22% discount was identified as the most effective in driving sales, suggesting that businesses should focus on offering discounts within this range to boost revenue.
-In terms of customer behavior, new customers slightly outperformed returning customers in terms of revenue. New customer acquisition was particularly strong in the North and East regions, while South and West regions had higher proportions of returning customers, indicating strong brand loyalty in those areas.
-
-Sales Channels:
-Sales were fairly split between retail and online channels, with retail sales slightly outperforming online sales overall. However, certain product categories showed channel-specific preferences—Clothing performed better in physical retail stores, while Electronics had stronger sales online.
-
-Key Recommendations:
-Focus on offering discounts in the 20%-24% range to maximize sales potential.
-Enhance efforts to attract new customers in the South and West regions to complement the existing loyal customer base.
-Optimize product offerings for each sales channel, ensuring that Clothing remains retail-focused while Electronics receives more online attention.
+The analysis found that 22% was the most effective discount rate, and returning customers preferred Furniture products, while Clothing was more popular with new customers. Additionally, the data showed that retail sales dominated in some regions, whereas online sales were more significant in others.
+These insights were used to guide business strategy, such as identifying profitable regions, optimizing discount strategies, and tailoring marketing efforts based on customer behaviors and preferences.
 
 Part 2: Sales Quantity Prediction using Machine Learning
-The second part of the project focused on leveraging machine learning to predict sales quantities, providing insights into future demand and enabling better business decisions.
+In Part 2, machine learning models were applied to predict future Quantity Sold, focusing on accuracy and reliability to assist businesses in planning and decision-making. The models tested include:
+Linear Regression: Used as a baseline for prediction, assuming a linear relationship between features and the target variable, Quantity Sold.
+Polynomial Regression: Applied to capture non-linear relationships between the features and Quantity Sold.
+Random Forest Regression: An ensemble method that combines multiple decision trees to make more robust predictions.
 
-Data Preprocessing:
-Before training the machine learning models, the data underwent preprocessing to ensure its suitability. Quantity Sold was chosen as the target variable for prediction, while features like Region, Product Category, Customer Type, and Sales Channel were selected as inputs.
+Data Preprocessing
+Before training the models, the data underwent extensive preprocessing to ensure it was ready for machine learning:
+Feature Selection: The target variable, Quantity Sold, was selected for prediction. Relevant features such as Region, Product Category, Customer Type, Sales Channel, and Month were chosen for the model.
+Categorical Encoding: Categorical variables like Region and Product Category were one-hot encoded to allow the models to process them effectively.
+Data Split: The dataset was split into 80% for training and 20% for testing, ensuring the models were trained on a portion of the data while evaluated on a separate set for performance.
 
-Categorical features, such as Region and Product Category, were encoded using One-Hot Encoding to convert them into numerical values that could be processed by machine learning algorithms. The dataset was then split into 80% for training and 20% for testing to evaluate model performance accurately.
-
-Model Selection and Performance:
-Three machine learning models were tested for predicting sales quantities:
+Model Results
 Linear Regression:
-Linear Regression served as a baseline model. While it performed adequately with an R² of 0.738, its simple nature did not capture complex relationships in the data, which led to a higher Mean Squared Error (MSE) of 51.60.
+R²: 0.738 (indicating the model explained 73.8% of the variance in Quantity Sold)
+MSE: 51.60
+MAE: 5.35
 
 Polynomial Regression:
-Polynomial Regression allowed for more flexibility, capturing non-linear relationships between the features and the target variable. The model showed an improved performance, with an R² of 0.852, a reduced MSE of 29.20, and a Mean Absolute Error (MAE) of 3.68.
-
+R²: 0.852
+MSE: 29.20
+MAE: 3.68
 Random Forest Regression:
-The Random Forest model was the standout performer. This ensemble model combined multiple decision trees to capture complex patterns and reduce overfitting. It achieved an impressive R² of 0.969, with a very low MSE of 6.09 and MAE of 1.44. This model demonstrated the highest accuracy and robustness, making it the best choice for future sales predictions.
+R²: 0.969 (showing that the model explained 96.9% of the variance in Quantity Sold)
+MSE: 6.09
+MAE: 1.44
 
-Cross-Validation:
-To ensure the Random Forest model’s stability and generalizability, cross-validation was performed. The model’s R² scores across multiple folds ranged from 0.965 to 0.986, with an average R² of 0.977, confirming that it could be reliably applied to unseen data.
+The Random Forest model was the most accurate, capturing complex patterns in the data and significantly outperforming both linear and polynomial regression models. The model's R² score of 0.969 and its low MSE and MAE demonstrate its ability to make reliable predictions for future sales.
 
-Conclusion:
-The Random Forest Regression model emerged as the most accurate and effective method for predicting future sales quantities. Its ability to explain the majority of variance in the data with minimal prediction error makes it a valuable tool for businesses seeking to optimize inventory, marketing strategies, and operations.
+Cross-Validation Results
+Cross-validation was performed to evaluate the model's stability across multiple folds. The Random Forest model showed consistently high performance with an average R² score of 0.977, confirming its ability to generalize well to unseen data.
 
-Tools and Libraries Used:
-Pandas: For data manipulation and analysis.
-NumPy: For numerical computations.
-Matplotlib & Seaborn: For data visualization.
-Scikit-learn: For building and evaluating machine learning models:
-RandomForestRegressor and LinearRegression for predictive modeling.
-train_test_split, cross_val_score, and PolynomialFeatures for model evaluation and feature transformation.
-mean_absolute_error and mean_squared_error for performance metrics.
+Conclusion
+This project demonstrates the effectiveness of machine learning for predicting Quantity Sold. By using Random Forest Regression, businesses can forecast future sales quantities with high accuracy. This allows for better inventory management, more effective marketing strategies, and improved operational planning. The insights gained from EDA also provide valuable business intelligence, helping organizations optimize sales strategies and enhance customer targeting.
 
-Final Thoughts:
-This project showcases the potential of using machine learning to predict sales quantities with high accuracy. The insights gained from the Exploratory Data Analysis and the Random Forest Regression model provide valuable guidance for improving business operations, enhancing inventory management, and optimizing marketing efforts. By leveraging these insights, businesses can make more informed decisions and stay ahead of future demand trends.
+Technologies Used
+Python
+Pandas
+Numpy
+Scikit-learn
+Matplotlib
+Seaborn
